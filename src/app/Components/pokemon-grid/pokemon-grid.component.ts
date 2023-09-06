@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { PokemonInMainList } from 'src/app/Interfaces/PokeAPIModels';
 
 @Component({
   selector: 'pokemon-grid',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./pokemon-grid.component.css']
 })
 export class PokemonGridComponent {
-
+  @Input() pokemonList: PokemonInMainList[] = [];
 }

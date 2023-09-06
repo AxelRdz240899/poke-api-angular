@@ -1,5 +1,5 @@
 <div class="container">
     <div class="grid">
-        <pokemon-grid-card *ngFor="let number of [1,1,1,1,1,1,1,1,1,1,1,1,1]"></pokemon-grid-card>
+        <pokemon-grid-card *ngFor="let pokemon of pokemonList" [pokemonInformation]="pokemon"></pokemon-grid-card>
     </div>
 </div>
