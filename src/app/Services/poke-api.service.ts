@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { MainListResponse } from '../Interfaces/PokeAPIModels';
+import { MainListResponse, PokemonDetail } from '../Interfaces/PokeAPIModels';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -20,5 +20,9 @@ export class PokeAPIService {
 
   getPokemonId(url: string): string {
     return url.split("/")[6];
+  }
+
+  getPokemonDetail(id: string): Observable<PokemonDetail> {
+    return this.http.get<PokemonDetail>(`${this.baseUrl}/pokemon/${id}`);
   }
 }

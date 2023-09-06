@@ -1,16 +1,18 @@
 <header>
     <ul>
         <li>
-            <img src="assets/logo.png" alt="logo" class="logo">
+            <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">
+                <img src="assets/logo.png" alt="logo" class="logo">
+            </a>
         </li>
         <li>
-            <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">
+            <a class="menu-button" routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">
                 Pokemon List
             </a>
         </li>
         <li>
-            <a routerLink="/bookmarked" routerLinkActive="active" ariaCurrentWhenActive="page">Pokemon
-                Bookmarked
+            <a class="menu-button" routerLink="/bookmarked" routerLinkActive="active"
+                ariaCurrentWhenActive="page">Pokemon Bookmarked
             </a>
         </li>
     </ul>

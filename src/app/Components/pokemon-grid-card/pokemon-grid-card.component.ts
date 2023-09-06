@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { PokemonInMainList } from 'src/app/Interfaces/PokeAPIModels';
+import { Pokemon } from 'src/app/Interfaces/PokeAPIModels';
 
 @Component({
   selector: 'pokemon-grid-card',
@@ -7,7 +7,7 @@ import { PokemonInMainList } from 'src/app/Interfaces/PokeAPIModels';
   styleUrls: ['./pokemon-grid-card.component.css']
 })
 export class PokemonGridCardComponent {
-  @Input() pokemonInformation: PokemonInMainList = {
+  @Input() pokemonInformation: Pokemon = {
     name: "",
     url: "",
     id: "-1"

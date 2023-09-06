@@ -1,1 +1,45 @@
-<p>pokemon-detail works!</p>
+<main>
+    <div class="detail-card">
+        <p class="pokemon-name">{{pokemonDetail.name}}</p>
+        <div class="details-container">
+            <section class="main-image-container">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork//{{pokemonId}}.png"
+                    alt="pokemon-main-image">
+            </section>
+            <section class="information-container">
+                <div class="animated-sprite-container">
+                    <img src="{{currentSpriteImage}}" alt="pokemon-image">
+                </div>
+                <ul class="sprites-container">
+                    <li *ngFor="let sprite of pokemonSprites">
+                        <img src="{{sprite}}" alt="pokemon-stripe">
+                    </li>
+                </ul>
+
+                <div class="abilities-container">
+                    <p class="section-title">Abilities</p>
+                    <ul class="chip-list">
+                        <li class="chip ability-chip" *ngFor="let abilitieElement of pokemonDetail.abilities">
+                            <p class="ability-name">
+                                {{abilitieElement.ability.name}}
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="games-container">
+                    <p class="section-title">
+                        Games
+                    </p>
+                    <ul class="chip-list">
+                        <li class="chip game-chip" *ngFor="let game of pokemonDetail.game_indices">
+                            <p class="ability-name">
+                                {{game.version.name}}
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </div>
+</main>
