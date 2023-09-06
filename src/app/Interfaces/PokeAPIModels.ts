@@ -8,7 +8,8 @@ export interface MainListResponse {
 export interface Pokemon {
     name: string,
     url: string
-    id: string
+    id: string,
+    isBookmarked: boolean
 };
 
 export interface PokemonDetail {

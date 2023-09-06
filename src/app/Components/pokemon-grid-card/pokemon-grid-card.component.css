@@ -9,6 +9,18 @@
     cursor: pointer;
     text-decoration: none;
     color: black;
+    position: relative;
+}
+
+.bookmark-button {
+    cursor: pointer;
+}
+
+.bookmark-heart {
+    width: 30px;
+    height: auto;
+    position: absolute;
+    right: 15px;
 }
 
 .name {
@@ -17,13 +29,13 @@
     font-weight: bold;
 }
 
-.card img {
+.card img.pokemon-image {
     width: 35%;
     height: auto;
 }
 
 @media screen and (min-width: 576px) {
-    .card img {
+    .card img.pokemon-image {
         width: 50%;
     }
 }

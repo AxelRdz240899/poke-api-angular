@@ -8,4 +8,5 @@ import { Pokemon } from 'src/app/Interfaces/PokeAPIModels';
 })
 export class PokemonGridComponent {
   @Input() pokemonList: Pokemon[] = [];
+  @Input() canChangeBookmark: boolean = false;
 }

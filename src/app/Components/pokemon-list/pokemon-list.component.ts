@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MainListResponse } from 'src/app/Interfaces/PokeAPIModels';
+import { BookmarkPokemonService } from 'src/app/Services/bookmark-pokemon.service';
 import { PokeAPIService } from 'src/app/Services/poke-api.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class PokemonListComponent implements OnInit {
     results: []
   };
 
-  constructor(private _api: PokeAPIService) { }
+  constructor(private _api: PokeAPIService, private bookmarkedService: BookmarkPokemonService) { }
 
   ngOnInit() {
     this.fetchPokemon();
@@ -27,6 +28,7 @@ export class PokemonListComponent implements OnInit {
       this.pokemonListDetail = response;
       this.pokemonListDetail.results.forEach(pokemon => {
         pokemon.id = this._api.getPokemonId(pokemon.url);
+        pokemon.isBookmarked = this.bookmarkedService.checkIfPokemonIsBookmarked(pokemon.id);
       })
     });
   }
