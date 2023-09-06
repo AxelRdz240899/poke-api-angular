@@ -7,6 +7,8 @@ import { PokemonListComponent } from './Components/pokemon-list/pokemon-list.com
 import { PokemonDetailComponent } from './Components/pokemon-detail/pokemon-detail.component';
 import { PokemonBookmarkedComponent } from './Components/pokemon-bookmarked/pokemon-bookmarked.component';
 import { MenuComponent } from './Components/menu/menu.component';
+import { PokemonGridComponent } from './Components/pokemon-grid/pokemon-grid.component';
+import { PokemonGridCardComponent } from './Components/pokemon-grid-card/pokemon-grid-card.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { MenuComponent } from './Components/menu/menu.component';
     PokemonListComponent,
     PokemonDetailComponent,
     PokemonBookmarkedComponent,
-    MenuComponent
+    MenuComponent,
+    PokemonGridComponent,
+    PokemonGridCardComponent
   ],
   imports: [
     BrowserModule,
