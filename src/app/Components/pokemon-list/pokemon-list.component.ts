@@ -10,6 +10,7 @@ import { PokeAPIService } from 'src/app/Services/poke-api.service';
 })
 export class PokemonListComponent implements OnInit {
 
+  loading: boolean = true;
   pokemonListDetail: MainListResponse = {
     count: 0,
     next: "",
@@ -30,6 +31,7 @@ export class PokemonListComponent implements OnInit {
         pokemon.id = this._api.getPokemonId(pokemon.url);
         pokemon.isBookmarked = this.bookmarkedService.checkIfPokemonIsBookmarked(pokemon.id);
       })
+      this.loading = false;
     });
   }
 }

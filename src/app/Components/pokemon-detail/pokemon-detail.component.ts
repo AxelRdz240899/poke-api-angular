@@ -10,6 +10,7 @@ import { PokeAPIService } from 'src/app/Services/poke-api.service';
 })
 export class PokemonDetailComponent implements OnInit {
 
+  loading: boolean = true;
   pokemonDetail: PokemonDetail = {
     name: "",
     abilities: [],
@@ -45,6 +46,7 @@ export class PokemonDetailComponent implements OnInit {
 
   fetchPokemonDetail() {
     this.api.getPokemonDetail(this.pokemonId).subscribe(response => {
+      this.loading = false;
       this.pokemonDetail = response;
       this.pokemonSprites = Object.values(response.sprites).filter(value => value != null && typeof value == "string");
       this.pokemonSprites.reverse();
