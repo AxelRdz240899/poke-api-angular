@@ -25,7 +25,8 @@ export class PokemonDetailComponent implements OnInit {
       front_female: "",
       front_shiny: "",
       front_shiny_female: ""
-    }
+    },
+    stats: []
   };
 
   pokemonId: string = "";

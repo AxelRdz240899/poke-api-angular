@@ -95,6 +95,11 @@ main {
     margin-top: 25px;
 }
 
+.stat-table {
+    border: 2px solid #acd5ee;
+    padding: 5px;
+}
+
 @media screen and (min-width: 576px) {
     .main-image-container>img {
         width: 40%;

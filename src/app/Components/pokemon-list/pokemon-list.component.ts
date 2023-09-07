@@ -33,7 +33,6 @@ export class PokemonListComponent implements OnInit {
         this.loading = false;
         this.spinner.hide();
         this.offset += this._api.limit;
-        this.alreadyLoadingPokemon = false;
       });
     }
   }
@@ -45,6 +44,7 @@ export class PokemonListComponent implements OnInit {
       pokemon.isBookmarked = this.bookmarkedService.checkIfPokemonIsBookmarked(pokemon.id);
     })
     this.havePokemonLeft = pokemonListDetail.next != null ? true : false;
+    this.alreadyLoadingPokemon = false;
   }
 
   @HostListener("window:scroll", [])

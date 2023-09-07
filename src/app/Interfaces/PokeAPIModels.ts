@@ -40,5 +40,13 @@ export interface PokemonDetail {
         front_female: string,
         front_shiny: string,
         front_shiny_female: string
-    }
+    },
+    stats: Array<
+        {
+            base_stat: number,
+            stat: {
+                name: string,
+            }
+        }
+    >
 }

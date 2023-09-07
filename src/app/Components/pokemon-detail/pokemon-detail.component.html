@@ -27,7 +27,7 @@
                     </ul>
                 </div>
 
-                <div class="games-container">
+                <div>
                     <p class="section-title">
                         Games
                     </p>
@@ -39,6 +39,27 @@
                         </li>
                     </ul>
                 </div>
+
+                <div>
+                    <p class="section-title">
+                        Initial stats
+                    </p>
+                    <table class="stat-table">
+                        <thead>
+                            <tr>
+                                <th>Stat name</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let statElement of pokemonDetail.stats">
+                                <td style="text-transform: uppercase;">{{statElement.stat.name}}</td>
+                                <td>{{statElement.base_stat}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
             </section>
         </div>
     </div>
