@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class PokeAPIService {
 
   private baseUrl: string = "https://pokeapi.co/api/v2";
-  limit: number = 10;
+  limit: number = 20;
 
   constructor(private http: HttpClient) { }
 

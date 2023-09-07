@@ -18,13 +18,6 @@ export class PokemonListComponent implements OnInit {
   offset: number = 0;
   alreadyLoadingPokemon: boolean = false;
 
-  pokemonListDetail: MainListResponse = {
-    count: 0,
-    next: "",
-    previous: "",
-    results: []
-  };
-
   constructor(private _api: PokeAPIService, private bookmarkedService: BookmarkPokemonService, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
@@ -36,19 +29,22 @@ export class PokemonListComponent implements OnInit {
       this.alreadyLoadingPokemon = true;
       this.spinner.show();
       this._api.getPokemonList(this.offset).subscribe(response => {
-        this.pokemonListDetail = response;
-        this.pokemonList.push(...this.pokemonListDetail.results);
-        this.pokemonList.forEach(pokemon => {
-          pokemon.id = this._api.getPokemonId(pokemon.url);
-          pokemon.isBookmarked = this.bookmarkedService.checkIfPokemonIsBookmarked(pokemon.id);
-        })
-        this.havePokemonLeft = this.pokemonListDetail.next != null ? true : false;
+        this.addPokemonToExistingList(response);
         this.loading = false;
         this.spinner.hide();
         this.offset += this._api.limit;
         this.alreadyLoadingPokemon = false;
       });
     }
+  }
+
+  addPokemonToExistingList(pokemonListDetail: MainListResponse) {
+    this.pokemonList.push(...pokemonListDetail.results);
+    this.pokemonList.forEach(pokemon => {
+      pokemon.id = this._api.getPokemonId(pokemon.url);
+      pokemon.isBookmarked = this.bookmarkedService.checkIfPokemonIsBookmarked(pokemon.id);
+    })
+    this.havePokemonLeft = pokemonListDetail.next != null ? true : false;
   }
 
   @HostListener("window:scroll", [])
