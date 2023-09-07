@@ -11,6 +11,7 @@ import { MenuComponent } from './Components/menu/menu.component';
 import { PokemonGridComponent } from './Components/pokemon-grid/pokemon-grid.component';
 import { PokemonGridCardComponent } from './Components/pokemon-grid-card/pokemon-grid-card.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NgxSpinnerModule.forRoot({ type: 'square-loader' })
+    NgxSpinnerModule.forRoot({ type: 'square-loader' }),
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

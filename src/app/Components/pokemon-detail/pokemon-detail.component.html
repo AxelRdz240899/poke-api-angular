@@ -1,5 +1,5 @@
 <main>
-    <div *ngIf="!loading" class="detail-card">
+    <div *ngIf="!loading && successfulResponse" class="detail-card">
         <p class="pokemon-name">{{pokemonDetail.name}}</p>
         <div class="details-container">
             <section class="main-image-container">

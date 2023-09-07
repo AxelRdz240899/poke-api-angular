@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { PokemonDetail } from 'src/app/Interfaces/PokeAPIModels';
 import { PokeAPIService } from 'src/app/Services/poke-api.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { finalize } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-pokemon-detail',
@@ -12,6 +14,8 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class PokemonDetailComponent implements OnInit {
 
   loading: boolean = true;
+  successfulResponse: boolean = false;
+
   pokemonDetail: PokemonDetail = {
     name: "",
     abilities: [],
@@ -37,7 +41,12 @@ export class PokemonDetailComponent implements OnInit {
 
   currentSpriteImageIndex: number = -1;
 
-  constructor(private api: PokeAPIService, private route: ActivatedRoute, private spinner: NgxSpinnerService) { }
+  constructor(
+    private api: PokeAPIService,
+    private route: ActivatedRoute,
+    private spinner: NgxSpinnerService,
+    private toastr: ToastrService
+  ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -48,13 +57,18 @@ export class PokemonDetailComponent implements OnInit {
 
   fetchPokemonDetail() {
     this.spinner.show();
-    this.api.getPokemonDetail(this.pokemonId).subscribe(response => {
+    this.api.getPokemonDetail(this.pokemonId).pipe(finalize(() => {
+      this.loading = false;
+      this.spinner.hide();
+      // this is called on both success and error
+    })).subscribe(response => {
+      this.successfulResponse = true;
       this.pokemonDetail = response;
       this.pokemonSprites = Object.values(response.sprites).filter(value => value != null && typeof value == "string");
       this.pokemonSprites.reverse();
       this.initSpriteVariables();
-      this.loading = false;
-      this.spinner.hide();
+    }, error => {
+      this.toastr.error("An error has ocurred, try again in a few minutes", "Error");
     })
   }
 
