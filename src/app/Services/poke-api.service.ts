@@ -9,13 +9,12 @@ import { Observable } from 'rxjs';
 export class PokeAPIService {
 
   private baseUrl: string = "https://pokeapi.co/api/v2";
-  private limit: number = 20;
-  private offset: number = 0;
+  limit: number = 10;
 
   constructor(private http: HttpClient) { }
 
-  getPokemonList(): Observable<MainListResponse> {
-    return this.http.get<MainListResponse>(`${this.baseUrl}/pokemon?limit=${this.limit}?offset=${this.offset}`);
+  getPokemonList(offset: number): Observable<MainListResponse> {
+    return this.http.get<MainListResponse>(`${this.baseUrl}/pokemon?limit=${this.limit}&offset=${offset}`);
   }
 
   getPokemonId(url: string): string {
