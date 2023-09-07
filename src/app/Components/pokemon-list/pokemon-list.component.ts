@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MainListResponse } from 'src/app/Interfaces/PokeAPIModels';
 import { BookmarkPokemonService } from 'src/app/Services/bookmark-pokemon.service';
 import { PokeAPIService } from 'src/app/Services/poke-api.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -18,13 +19,14 @@ export class PokemonListComponent implements OnInit {
     results: []
   };
 
-  constructor(private _api: PokeAPIService, private bookmarkedService: BookmarkPokemonService) { }
+  constructor(private _api: PokeAPIService, private bookmarkedService: BookmarkPokemonService, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
     this.fetchPokemon();
   }
 
   fetchPokemon() {
+    this.spinner.show();
     this._api.getPokemonList().subscribe(response => {
       this.pokemonListDetail = response;
       this.pokemonListDetail.results.forEach(pokemon => {
@@ -32,6 +34,7 @@ export class PokemonListComponent implements OnInit {
         pokemon.isBookmarked = this.bookmarkedService.checkIfPokemonIsBookmarked(pokemon.id);
       })
       this.loading = false;
+      this.spinner.hide();
     });
   }
 }

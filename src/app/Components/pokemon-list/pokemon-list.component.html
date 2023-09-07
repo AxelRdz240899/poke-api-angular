@@ -1,3 +1,8 @@
 <div class="grid-container">
     <pokemon-grid *ngIf="!loading" [pokemonList]="pokemonListDetail.results" [canChangeBookmark]="true"></pokemon-grid>
 </div>
+<ngx-spinner>
+    <p style="color: white">
+        Loading...
+    </p>
+</ngx-spinner>

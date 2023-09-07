@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +10,7 @@ import { PokemonBookmarkedComponent } from './Components/pokemon-bookmarked/poke
 import { MenuComponent } from './Components/menu/menu.component';
 import { PokemonGridComponent } from './Components/pokemon-grid/pokemon-grid.component';
 import { PokemonGridCardComponent } from './Components/pokemon-grid-card/pokemon-grid-card.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { PokemonGridCardComponent } from './Components/pokemon-grid-card/pokemon
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    NgxSpinnerModule.forRoot({ type: 'square-loader' })
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PokemonDetail } from 'src/app/Interfaces/PokeAPIModels';
 import { PokeAPIService } from 'src/app/Services/poke-api.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-pokemon-detail',
@@ -35,7 +36,7 @@ export class PokemonDetailComponent implements OnInit {
 
   currentSpriteImageIndex: number = -1;
 
-  constructor(private api: PokeAPIService, private route: ActivatedRoute) { }
+  constructor(private api: PokeAPIService, private route: ActivatedRoute, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -45,12 +46,14 @@ export class PokemonDetailComponent implements OnInit {
   }
 
   fetchPokemonDetail() {
+    this.spinner.show();
     this.api.getPokemonDetail(this.pokemonId).subscribe(response => {
-      this.loading = false;
       this.pokemonDetail = response;
       this.pokemonSprites = Object.values(response.sprites).filter(value => value != null && typeof value == "string");
       this.pokemonSprites.reverse();
       this.initSpriteVariables();
+      this.loading = false;
+      this.spinner.hide();
     })
   }
 

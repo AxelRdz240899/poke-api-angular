@@ -25,6 +25,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/ngx-spinner/animations/square-loader.css",
               "src/styles.css"
             ],
             "scripts": []
