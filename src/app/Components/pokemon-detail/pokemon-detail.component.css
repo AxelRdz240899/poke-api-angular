@@ -15,6 +15,8 @@ main {
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     padding: 40px 20px;
+    background: rgb(172, 213, 238);
+    background: linear-gradient(180deg, rgba(172, 213, 238, 1) 0%, rgba(240, 240, 240, 1) 56%);
 }
 
 .pokemon-name {

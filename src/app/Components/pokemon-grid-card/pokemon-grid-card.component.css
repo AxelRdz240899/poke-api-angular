@@ -10,6 +10,8 @@
     text-decoration: none;
     color: black;
     position: relative;
+    background: rgb(172, 213, 238);
+    background: linear-gradient(180deg, rgba(172, 213, 238, 1) 0%, rgba(240, 240, 240, 1) 56%);
 }
 
 .bookmark-button {
